@@ -1,0 +1,787 @@
+//====================================program No 9.1=======================================================
+public class Rectangle {
+    private double width;
+    private double height;
+
+    public Rectangle() {
+        this.width = 1;
+        this.height = 1;
+    }
+
+    public Rectangle(double width, double height) {
+        this.width = width;
+        this.height = height;
+    }
+
+    public double getArea() {
+        return this.width * this.height;
+    }
+
+    public double getPerimeter() {
+        return 2 * (this.width + this.height);
+    }
+
+    public double getWidth() {
+        return this.width;
+    }
+
+    public double getHeight() {
+        return this.height;
+    }
+}
+
+//===============test Class================
+public class TestRectangle {
+    public static void main(String[] args) {
+        Rectangle rectangle1 = new Rectangle(4, 40);
+        Rectangle rectangle2 = new Rectangle(3.5, 35.9);
+
+        System.out.println("Rectangle 1:");
+        System.out.println("Width: " + rectangle1.getWidth());
+        System.out.println("Height: " + rectangle1.getHeight());
+        System.out.println("Area: " + rectangle1.getArea());
+        System.out.println("Perimeter: " + rectangle1.getPerimeter());
+
+        System.out.println();
+
+        System.out.println("Rectangle 2:");
+        System.out.println("Width: " + rectangle2.getWidth());
+        System.out.println("Height: " + rectangle2.getHeight());
+        System.out.println("Area: " + rectangle2.getArea());
+        System.out.println("Perimeter: " + rectangle2.getPerimeter());
+    }
+}
+
+//=============================================Program No 9.2====================================================
+
+public class Stock {
+    private String symbol;
+    private String name;
+    private double previousClosingPrice;
+    private double currentPrice;
+
+    public Stock(String symbol, String name) {
+        this.symbol = symbol;
+        this.name = name;
+    }
+
+    public double getChangePercent() {
+        return ((this.currentPrice - this.previousClosingPrice) / this.previousClosingPrice) * 100;
+    }
+
+    public void setPreviousClosingPrice(double previousClosingPrice) {
+        this.previousClosingPrice = previousClosingPrice;
+    }
+
+    public void setCurrentPrice(double currentPrice) {
+        this.currentPrice = currentPrice;
+    }
+}
+
+//===========test class =========================
+public class TestStock {
+    public static void main(String[] args) {
+        Stock stock = new Stock("ORCL", "Oracle Corporation");
+        stock.setPreviousClosingPrice(34.5);
+        stock.setCurrentPrice(34.35);
+
+        System.out.println("Price change percentage: " + stock.getChangePercent() + "%");
+    }
+}
+
+//=================================================program No 9.3=========================================
+
+import java.util.Date;
+
+public class TestDate {
+    public static void main(String[] args) {
+        long[] elapsedTimes = {
+            10000, 100000, 1000000, 10000000,
+            100000000, 1000000000, 10000000000L,
+            100000000000L
+        };
+
+        for (long elapsedTime : elapsedTimes) {
+            Date date = new Date(elapsedTime);
+            System.out.println(date.toString());
+        }
+    }
+}
+
+//===========test class======================
+import java.util.Date;
+
+public class TestDate {
+    public static void main(String[] args) {
+        long[] elapsedTimes = {
+            10000, 100000, 1000000, 10000000,
+            100000000, 1000000000, 10000000000L,
+            100000000000L
+        };
+
+        for (long elapsedTime : elapsedTimes) {
+            Date date = new Date(elapsedTime);
+            System.out.println(date.toString());
+        }
+    }
+}
+
+//=======================================================Program No 9.4===================================
+
+import java.util.Date;
+
+public class TestDate {
+    public static void main(String[] args) {
+        long[] elapsedTimes = {
+            10000, 100000, 1000000, 10000000,
+            100000000, 1000000000, 10000000000L,
+            100000000000L
+        };
+
+        for (long elapsedTime : elapsedTimes) {
+            Date date = new Date(elapsedTime);
+            System.out.println(date.toString());
+        }
+    }
+}
+
+//===================================================Program No 9.5=============================================
+
+import java.util.GregorianCalendar;
+
+public class CalendarDemo {
+    public static void main(String[] args) {
+        // Display the current year, month, and day
+        GregorianCalendar cal = new GregorianCalendar();
+        int year = cal.get(GregorianCalendar.YEAR);
+        int month = cal.get(GregorianCalendar.MONTH) + 1; // add 1 to match 1-12 format
+        int day = cal.get(GregorianCalendar.DAY_OF_MONTH);
+        System.out.println("Current date: " + year + "/" + month + "/" + day);
+        
+        // Set the elapsed time to 1234567898765L and display the year, month, and day
+        cal.setTimeInMillis(1234567898765L);
+        year = cal.get(GregorianCalendar.YEAR);
+        month = cal.get(GregorianCalendar.MONTH) + 1; // add 1 to match 1-12 format
+        day = cal.get(GregorianCalendar.DAY_OF_MONTH);
+        System.out.println("Date with elapsed time of 1234567898765L: " + year + "/" + month + "/" + day);
+    }
+}
+
+//==========================================program NO 9.6=================================================
+
+public class StopWatch {
+    private long startTime;
+    private long endTime;
+    
+    public StopWatch() {
+        startTime = System.currentTimeMillis();
+    }
+    
+    public long getStartTime() {
+        return startTime;
+    }
+    
+    public long getEndTime() {
+        return endTime;
+    }
+    
+    public void start() {
+        startTime = System.currentTimeMillis();
+    }
+    
+    public void stop() {
+        endTime = System.currentTimeMillis();
+    }
+    
+    public long getElapsedTime() {
+        return endTime - startTime;
+    }
+}
+
+//==============Test class=============
+import java.util.Random;
+
+public class TestStopWatch {
+    public static void main(String[] args) {
+        int[] numbers = new int[100000];
+        Random rand = new Random();
+        for (int i = 0; i < numbers.length; i++) {
+            numbers[i] = rand.nextInt(100000);
+        }
+        
+        StopWatch stopwatch = new StopWatch();
+        selectionSort(numbers);
+        stopwatch.stop();
+        
+        System.out.println("Elapsed time: " + stopwatch.getElapsedTime() + " milliseconds.");
+    }
+    
+    public static void selectionSort(int[] arr) {
+        for (int i = 0; i < arr.length - 1; i++) {
+            int minIndex = i;
+            for (int j = i + 1; j < arr.length; j++) {
+                if (arr[j] < arr[minIndex]) {
+                    minIndex = j;
+                }
+            }
+            int temp = arr[i];
+            arr[i] = arr[minIndex];
+            arr[minIndex] = temp;
+        }
+    }
+}
+
+//====================================================Program No 9.7=========================================
+
+import java.util.Date;
+
+public class Account {
+    private int id;
+    private double balance;
+    private double annualInterestRate;
+    private Date dateCreated;
+
+    public Account() {
+        this(0, 0);
+    }
+
+    public Account(int id, double balance) {
+        this.id = id;
+        this.balance = balance;
+        this.annualInterestRate = 0;
+        this.dateCreated = new Date();
+    }
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
+
+    public double getBalance() {
+        return balance;
+    }
+
+    public void setBalance(double balance) {
+        this.balance = balance;
+    }
+
+    public double getAnnualInterestRate() {
+        return annualInterestRate;
+    }
+
+    public void setAnnualInterestRate(double annualInterestRate) {
+        this.annualInterestRate = annualInterestRate;
+    }
+
+    public Date getDateCreated() {
+        return dateCreated;
+    }
+
+    public double getMonthlyInterestRate() {
+        return annualInterestRate / 12;
+    }
+
+    public double getMonthlyInterest() {
+        return balance * getMonthlyInterestRate();
+    }
+
+    public void withdraw(double amount) {
+        balance -= amount;
+    }
+
+    public void deposit(double amount) {
+        balance += amount;
+    }
+}
+
+//===============test class==============
+public class TestAccount {
+    public static void main(String[] args) {
+        Account account = new Account(1122, 20000);
+        account.setAnnualInterestRate(4.5);
+        account.withdraw(2500);
+        account.deposit(3000);
+
+        System.out.printf("Balance: $%.2f\n", account.getBalance());
+        System.out.printf("Monthly interest: $%.2f\n", account.getMonthlyInterest());
+        System.out.println("Date created: " + account.getDateCreated());
+    }
+}
+
+//===================================================program No 9.8==========================================
+
+public class Fan {
+    private final static int SLOW = 1;
+    private final static int MEDIUM = 2;
+    private final static int FAST = 3;
+    private int speed;
+    private boolean on;
+    private double radius;
+    private String color;
+    
+    public Fan() {
+        this.speed = SLOW;
+        this.on = false;
+        this.radius = 5.0;
+        this.color = "blue";
+    }
+    
+    public String toString() {
+        if (on) {
+            return "speed: " + speed + ", color: " + color + ", radius: " + radius;
+        } else {
+            return "fan is off, color: " + color + ", radius: " + radius;
+        }
+    }
+    
+    public int getSpeed() {
+        return speed;
+    }
+    
+    public void setSpeed(int speed) {
+        this.speed = speed;
+    }
+    
+    public boolean isOn() {
+        return on;
+    }
+    
+    public void setOn(boolean on) {
+        this.on = on;
+    }
+    
+    public double getRadius() {
+        return radius;
+    }
+    
+    public void setRadius(double radius) {
+        this.radius = radius;
+    }
+    
+    public String getColor() {
+        return color;
+    }
+    
+    public void setColor(String color) {
+        this.color = color;
+    }
+}
+
+//====================test class==============
+public class FanTest {
+    public static void main(String[] args) {
+        Fan fan1 = new Fan();
+        fan1.setSpeed(Fan.FAST);
+        fan1.setRadius(10);
+        fan1.setColor("yellow");
+        fan1.setOn(true);
+        
+        Fan fan2 = new Fan();
+        fan2.setSpeed(Fan.MEDIUM);
+        fan2.setRadius(5);
+        fan2.setColor("blue");
+        fan2.setOn(false);
+        
+        System.out.println("Fan 1: " + fan1.toString());
+        System.out.println("Fan 2: " + fan2.toString());
+    }
+}
+
+//==================================================program No 9.8===========================================
+
+import java.lang.Math;
+
+public class RegularPolygon {
+    private int n;
+    private double side;
+    private double x;
+    private double y;
+
+    public RegularPolygon() {
+        this.n = 3;
+        this.side = 1.0;
+        this.x = 0.0;
+        this.y = 0.0;
+    }
+
+    public RegularPolygon(int n, double side) {
+        this.n = n;
+        this.side = side;
+        this.x = 0.0;
+        this.y = 0.0;
+    }
+
+    public RegularPolygon(int n, double side, double x, double y) {
+        this.n = n;
+        this.side = side;
+        this.x = x;
+        this.y = y;
+    }
+
+    public int getN() {
+        return this.n;
+    }
+
+    public void setN(int n) {
+        this.n = n;
+    }
+
+    public double getSide() {
+        return this.side;
+    }
+
+    public void setSide(double side) {
+        this.side = side;
+    }
+
+    public double getX() {
+        return this.x;
+    }
+
+    public void setX(double x) {
+        this.x = x;
+    }
+
+    public double getY() {
+        return this.y;
+    }
+
+    public void setY(double y) {
+        this.y = y;
+    }
+
+    public double getPerimeter() {
+        return this.n * this.side;
+    }
+
+    public double getArea() {
+        double angle = Math.toRadians(180.0 * (this.n - 2) / this.n);
+        return (this.n * Math.pow(this.side, 2.0)) / (4.0 * Math.tan(Math.PI / this.n));
+    }
+}
+
+//====================test class====================
+
+public class RegularPolygonTest {
+    public static void main(String[] args) {
+        RegularPolygon polygon1 = new RegularPolygon();
+        RegularPolygon polygon2 = new RegularPolygon(6, 4.0);
+        RegularPolygon polygon3 = new RegularPolygon(10, 4.0, 5.6, 7.8);
+
+        System.out.println("Polygon 1:");
+        System.out.println("Perimeter: " + polygon1.getPerimeter());
+        System.out.println("Area: " + polygon1.getArea());
+
+        System.out.println("Polygon 2:");
+        System.out.println("Perimeter: " + polygon2.getPerimeter());
+        System.out.println("Area: " + polygon2.getArea());
+
+        System.out.println("Polygon 3:");
+        System.out.println("Perimeter: " + polygon3.getPerimeter());
+        System.out.println("Area: " + polygon3.get
+
+//====================================================Program NO 9.10=========================================
+import java.util.Scanner;
+
+public class QuadraticEquation {
+    private double a;
+    private double b;
+    private double c;
+
+    public QuadraticEquation(double a, double b, double c) {
+        this.a = a;
+        this.b = b;
+        this.c = c;
+    }
+
+    public double getA() {
+        return a;
+    }
+
+    public double getB() {
+        return b;
+    }
+
+    public double getC() {
+        return c;
+    }
+
+    public double getDiscriminant() {
+        return b * b - 4 * a * c;
+    }
+
+    public double getRoot1() {
+        if (getDiscriminant() < 0) {
+            return 0;
+        } else {
+            return (-b + Math.sqrt(getDiscriminant())) / (2 * a);
+        }
+    }
+
+    public double getRoot2() {
+        if (getDiscriminant() < 0) {
+            return 0;
+        } else {
+            return (-b - Math.sqrt(getDiscriminant())) / (2 * a);
+        }
+    }
+//===============test class==========
+
+    public static void main(String[] args) {
+        Scanner input = new Scanner(System.in);
+
+        System.out.print("Enter values for a, b, and c: ");
+        double a = input.nextDouble();
+        double b = input.nextDouble();
+        double c = input.nextDouble();
+
+        QuadraticEquation equation = new QuadraticEquation(a, b, c);
+
+        double discriminant = equation.getDiscriminant();
+
+        if (discriminant > 0) {
+            double root1 = equation.getRoot1();
+            double root2 = equation.getRoot2();
+            System.out.println("The roots are " + root1 + " and " + root2);
+        } else if (discriminant == 0) {
+            double root = equation.getRoot1();
+            System.out.println("The root is " + root);
+        } else {
+            System.out.println("The equation has no roots.");
+        }
+    }
+}
+
+
+//=================================================program NO 9.11=========================================
+import java.util.Scanner;
+
+public class LinearEquation {
+    private double a;
+    private double b;
+    private double c;
+    private double d;
+    private double e;
+    private double f;
+
+    public LinearEquation(double a, double b, double c, double d, double e, double f) {
+        this.a = a;
+        this.b = b;
+        this.c = c;
+        this.d = d;
+        this.e = e;
+        this.f = f;
+    }
+
+    public double getA() {
+        return a;
+    }
+
+    public double getB() {
+        return b;
+    }
+
+    public double getC() {
+        return c;
+    }
+
+    public double getD() {
+        return d;
+    }
+
+    public double getE() {
+        return e;
+    }
+
+    public double getF() {
+        return f;
+    }
+
+    public boolean isSolvable() {
+        return a * d - b * c != 0;
+    }
+
+    public double getX() {
+        return (e * d - b * f) / (a * d - b * c);
+    }
+
+    public double getY() {
+        return (a * f - e * c) / (a * d - b * c);
+    }
+
+//====================test clas==================
+    public static void main(String[] args) {
+        Scanner input = new Scanner(System.in);
+        System.out.print("Enter a, b, c, d, e, f: ");
+        double a = input.nextDouble();
+        double b = input.nextDouble();
+        double c = input.nextDouble();
+        double d = input.nextDouble();
+        double e = input.nextDouble();
+        double f = input.nextDouble();
+
+        LinearEquation equation = new LinearEquation(a, b, c, d, e, f);
+
+        if (equation.isSolvable()) {
+            System.out.println("x is " + equation.getX() + " and y is " + equation.getY());
+        } else {
+            System.out.println("The equation has no solution.");
+        }
+    }
+}
+
+
+//==============================================program NO 9.12=============================================
+
+import java.util.Scanner;
+
+public class IntersectingPoint {
+
+    public static void main(String[] args) {
+        Scanner input = new Scanner(System.in);
+        System.out.print("Enter x1, y1, x2, y2, x3, y3, x4, y4: ");
+        double x1 = input.nextDouble();
+        double y1 = input.nextDouble();
+        double x2 = input.nextDouble();
+        double y2 = input.nextDouble();
+        double x3 = input.nextDouble();
+        double y3 = input.nextDouble();
+        double x4 = input.nextDouble();
+        double y4 = input.nextDouble();
+
+        double a = y1 - y2;
+        double b = x2 - x1;
+        double c = y3 - y4;
+        double d = x4 - x3;
+        double e = (y1 - y2) * x1 - (x1 - x2) * y1;
+        double f = (y3 - y4) * x3 - (x3 - x4) * y3;
+
+        LinearEquation linearEquation = new LinearEquation(a, b, c, d, e, f);
+
+        if (linearEquation.isSolvable()) {
+            System.out.println("The intersecting point is at (" + linearEquation.getX() + ", " + linearEquation.getY() + ")");
+        } else {
+            System.out.println("The two lines are parallel.");
+        }
+    }
+}
+
+class LinearEquation {
+    private double a;
+    private double b;
+    private double c;
+    private double d;
+    private double e;
+    private double f;
+
+    LinearEquation(double a, double b, double c, double d, double e, double f) {
+        this.a = a;
+        this.b = b;
+        this.c = c;
+        this.d = d;
+        this.e = e;
+        this.f = f;
+    }
+
+    double getA() {
+        return a;
+    }
+
+    double getB() {
+        return b;
+    }
+
+    double getC() {
+        return c;
+    }
+
+    double getD() {
+        return d;
+    }
+
+    double getE() {
+        return e;
+    }
+
+    double getF() {
+        return f;
+    }
+
+    boolean isSolvable() {
+        return a * d - b * c != 0;
+    }
+
+    double getX() {
+        return (e * d - b * f) / (a * d - b * c);
+    }
+
+    double getY() {
+        return (a * f - e * c) / (a * d - b * c);
+    }
+}
+
+
+
+//====================================================porgram No 9.13=============================================
+
+public class Location {
+    public int row;
+    public int column;
+    public double maxValue;
+
+    public Location(int row, int column, double maxValue) {
+        this.row = row;
+        this.column = column;
+        this.maxValue = maxValue;
+    }
+
+    public static Location locateLargest(double[][] a) {
+        int maxRow = 0;
+        int maxColumn = 0;
+        double maxValue = a[maxRow][maxColumn];
+        
+        for (int i = 0; i < a.length; i++) {
+            for (int j = 0; j < a[i].length; j++) {
+                if (a[i][j] > maxValue) {
+                    maxRow = i;
+                    maxColumn = j;
+                    maxValue = a[maxRow][maxColumn];
+                }
+            }
+        }
+
+        return new Location(maxRow, maxColumn, maxValue);
+    }
+}
+
+//=============================test class===================
+import java.util.Scanner;
+
+public class TestLocation {
+    public static void main(String[] args) {
+        Scanner input = new Scanner(System.in);
+
+        System.out.print("Enter the number of rows and columns in the array: ");
+        int rows = input.nextInt();
+        int columns = input.nextInt();
+
+        double[][] array = new double[rows][columns];
+
+        System.out.println("Enter the array: ");
+        for (int i = 0; i < rows; i++) {
+            for (int j = 0; j < columns; j++) {
+                array[i][j] = input.nextDouble();
+            }
+        }
+
+        Location maxLocation = Location.locateLargest(array);
+
+        System.out.printf("The location of the largest element is %.1f at (%d, %d)\n", 
+            maxLocation.maxValue, maxLocation.row, maxLocation.column);
+    }
+}
+
+
